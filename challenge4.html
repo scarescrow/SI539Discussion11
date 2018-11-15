@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Challenge 4</title>
+    <style>
+    p {
+    	display: none;
+    }
+    .errormsg { 
+        /*font: Use a cool Google font*/
+    	color:red;
+    	display:block; 
+    } 
+    </style>
+</head>
+<body>
+    <h1>Challenge 4</h1>
+	<form action="challenge5.html">
+        <fieldset>
+        <legend>Personal details</legend>
+          <label for="fullname">Full name: </label>
+            <input type="text" name="fullname" id="fullname">
+            <p id="nameerrormsg">Please enter your name above!</p>
+
+          <br/><label for ="streetaddr"></label>
+            Street Address:
+            <input type="text" name="streetaddr" id="streetaddr">
+            <p id="addrerrormsg">Please enter your street address!</p>
+        </fieldset>
+        <input type="submit" value="Submit it and move to next challenge!"> 
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(function() {
+    	$('form').submit(function() {
+    		var valid = true;
+    		$('form input[type=text]').each(function() {
+    			if(!(this.value)) {
+    				console.log(this);
+    				valid = false;
+    				$(this).next('p').addClass('errormsg')
+    				console.log($(this).next('p'));
+    			} else {
+    				$(this).next('p').removeClass('errormsg')
+    			}
+    		});
+    		if (!valid)
+    			return false;
+    	});
+    });
+    </script>
+</body>
+</html>
